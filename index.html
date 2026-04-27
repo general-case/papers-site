@@ -5,7 +5,41 @@
 
     <!-- Inline styling. -->
     <style>
-      h1 {text-align: center;}
+
+      /* Style the body tag to support a faded background image. */
+      body
+      {
+        position: relative; /* Required for absolute child positioning */
+        isolation: isolate; /* Ensures z-index works correctly */
+      
+        /* The following styles are needed to eliminate scroll bars. */
+        margin: 0px;
+        padding: 0px;
+        border: 1px solid white; /* This is needed for some reason to eliminate the scroll bars. */
+        min-height: 100vh; /* Occupy the entire height of the viewport. */
+        min-width: 100vw;      /* Occupy the entire width of the viewport. */
+        box-sizing: border-box;
+      }
+
+      /* Inserts a child element with no content that has the background under body. */
+      body::before
+      {
+        content: "";
+        background-image: url('background.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        position: absolute;
+        vertical-align: middle;
+        inset: 0;           /* Covers the entire container */
+        z-index: -1;        /* Places it behind the text */
+        opacity: 0.2;       /* Set your fade level (0.0 to 1.0) */
+      }
+
+      h1 {text-align: center; margin: 5%}
+      ul {font-size: x-large; font-weight: 600; margin-left: 5%;}
+
     </style>
   </head>
 
@@ -13,8 +47,8 @@
     <h1>List of papers</h1>
     <ul>
       <li>
-        <a href="https://general-case.github.io/basel-problem/main.pdf">
-          A detailed explanation of Euler’s solution to the Basel problem
+        <a href="https://general-case.github.io/basel-problem/main.pdf" target="_blank">
+          A detailed explanation of Euler's solution to the Basel problem
         </a>
       </li>
     </ul>
